@@ -66,8 +66,8 @@
 
       <p class="mb-1 mt-4">
       @if (Route::has('password.request'))
-        <a href="{{ route('password.request') }}">Forgot Password</a>
-      @endif
+<!--         <a href="{{ route('password.request') }}">Forgot Password</a>
+ -->      @endif
       </p>
       <p class="mb-0">
       @if (Route::has('register'))

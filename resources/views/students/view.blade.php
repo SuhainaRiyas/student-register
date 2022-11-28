@@ -15,7 +15,7 @@
     
     <div class="row">
         <div class="col-md-6">
-                <table class="table table-bordered text-center">
+                <table class="table table-bordered ">
                <tbody>
                     <tr>  
                         <td class="font-weight-bold">Name</td>                        

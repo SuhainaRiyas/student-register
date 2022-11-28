@@ -27,7 +27,7 @@
             </div> -->
     </div>
 
-    <table class="table table-bordered text-center">
+    <table class="table table-bordered text-center table-responsive">
            <thead>
                   <tr>
                      <th>S.No</th>
@@ -57,7 +57,7 @@
                      <td>{{ $student->country }}</td>
                      <?php  
                         $subjects = App\Models\Subject::where('student_id',$student->id)->pluck('subject_name')->toArray();
-                        $sub = implode(',',$subjects);
+                        $sub = implode(', ',$subjects);
                      ?>
                      <td>{{$sub}}</td>
                      <td>

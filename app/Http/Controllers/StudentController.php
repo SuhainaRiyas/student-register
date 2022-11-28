@@ -16,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
+        $students = Student::orderBy('id','DESC')->get();
         return view('students.index',compact('students'));
     }
 
@@ -121,7 +121,7 @@ class StudentController extends Controller
   
          if($request->input('moreFields')){
             foreach($request->input('moreFields') as $key => $value) {
-                    if(isset($value['subject'])){   
+                    if(isset($value['subject']) && isset($value['marks']) && isset($value['grade'])){   
                        if(isset($value['subject_id'])){                         
                                 array_push($newsubjectid,$value['subject_id']);                            
                            
@@ -133,6 +133,7 @@ class StudentController extends Controller
                                  'marks'=>$value['marks'],
                                  'grade' => $value['grade'],
                              ]);
+                            $error = 0;
                         }else{
                             Subject::create([
                                  'student_id' => $request->student_id,
@@ -140,7 +141,11 @@ class StudentController extends Controller
                                  'marks'=>$value['marks'],
                                  'grade' => $value['grade'],
                             ]);
+                            $error = 0;
                         }
+                    }else{
+                        $error = 1;
+                        $error_msg = 'All fields are mandotory. Please enter data';
                     }
             }
          }
@@ -153,7 +158,11 @@ class StudentController extends Controller
                      $subject->delete();
                  }                                
              }
-
-        return 'success';
+        if($error){
+            return $error_msg;
+        }else{
+            return 'success';
+        }
+        
     }
 }
