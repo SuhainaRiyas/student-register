@@ -6,4 +6,4 @@ Create database and enter database name, username, password in .env
 
 Run **php artisan migrate** to migrate tables
 
-Open the url http://localhost/nov28suhainabegum/public/
+Open the url http://localhost/student-register/public/
